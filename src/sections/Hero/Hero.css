@@ -1,7 +1,138 @@
+/* =========================
+   HERO SECTION
+========================= */
+
 .hero {
   margin: 0;
   padding: 230px 80px 105px;
 }
+
+/* =========================
+   ENTRANCE ANIMATIONS
+   ––––––––––––––––––––––––
+   Each child group fades + slides in when the
+   IntersectionObserver toggles the "--visible" class.
+========================= */
+
+/* ---- hero text ---- */
+
+.hero-text {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-text--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- hero title (stagger) ---- */
+
+.hero-text__title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 100ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 100ms;
+}
+
+.hero-text--visible .hero-text__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- hero description ---- */
+
+.hero-text__desc {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 200ms;
+}
+
+.hero-text--visible .hero-text__desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- hero buttons ---- */
+
+.hero-buttons {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 350ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 350ms;
+}
+
+.hero-buttons--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- hero visual area ---- */
+
+.hero-visual {
+  position: relative;
+  width: 562px;
+  height: 230px;
+  overflow: visible;
+
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1) 150ms,
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1) 150ms;
+}
+
+.hero-visual--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---- balance card ---- */
+
+.balance-card,
+.activity-card {
+  position: absolute;
+  z-index: 5;
+}
+
+.balance-card {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 300ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 300ms;
+}
+
+.balance-card--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- activity card ---- */
+
+.activity-card {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 450ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 450ms;
+}
+
+.activity-card--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================
+   LAYOUT
+========================= */
 
 .hero-content {
   display: flex;
@@ -23,15 +154,19 @@
   gap: 24px;
 }
 
+/* ---- heading ---- */
+
 .hero-text h1 {
   font-family: "Archivo", sans-serif;
   font-size: 67px;
   font-weight: 500;
   line-height: 120%;
   letter-spacing: -0.01em;
-  color: #E9F4F9;
+  color: #e9f4f9;
   margin: 0;
 }
+
+/* ---- description ---- */
 
 .hero-text p {
   max-width: 400px;
@@ -42,6 +177,10 @@
   color: rgba(233, 244, 249, 0.7);
   margin: 0;
 }
+
+/* =========================
+   BUTTONS
+========================= */
 
 .hero-buttons {
   width: 438px;
@@ -55,17 +194,14 @@
   height: 49px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(
-    106.53deg,
-    #00b4fd -5.68%,
-    #003ace 86.98%
-  );
+  background: linear-gradient(106.53deg, #00b4fd -5.68%, #003ace 86.98%);
 
   color: white;
   font-family: "Chivo Mono", monospace;
   font-size: 15px;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .primary-btn:hover {
@@ -73,7 +209,6 @@
   box-shadow:
     0 6px 25px rgba(0, 180, 253, 0.35),
     0 4px 10px rgba(0, 58, 206, 0.25);
-
   filter: brightness(1.08);
 }
 
@@ -88,19 +223,19 @@
   font-size: 15px;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .secondary-btn:hover {
-  background: #E9F4F9;
-  color: #000D12;
+  background: #e9f4f9;
+  color: #000d12;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(233, 244, 249, 0.12);
 }
 
-.primary-btn,
-.secondary-btn {
-  transition: all 0.3s ease;
-}
+/* =========================
+   VISUAL / GLOW
+========================= */
 
 .hero-visual {
   position: relative;
@@ -111,27 +246,20 @@
 
 .hero-glow {
   position: absolute;
-
   width: 400px;
   height: 400px;
-
   right: 80px;
   top: -50px;
-
   border-radius: 50%;
-
-  background: linear-gradient(
-    103.43deg,
-    #00B4FD -1.02%,
-    #003ACE 83.53%
-  );
-
+  background: linear-gradient(103.43deg, #00b4fd -1.02%, #003ace 83.53%);
   opacity: 0.35;
-
   filter: blur(100px);
-
   z-index: 0;
 }
+
+/* =========================
+   BALANCE CARD
+========================= */
 
 .balance-card,
 .activity-card {
@@ -139,9 +267,7 @@
   z-index: 5;
 }
 
-/* Main Image */
-
-.main-image {
+.hero-visual .main-image {
   position: relative;
   z-index: 1;
   width: 362.64px;
@@ -151,49 +277,32 @@
   opacity: 1;
 }
 
-/* ======================
-   BALANCE CARD
-====================== */
+/* ---- card container ---- */
 
 .balance-card {
   position: absolute;
-
   top: 23px;
   left: 353px;
-
   width: 208px;
   height: 177px;
-
   border-radius: 12px;
-
   background: rgba(255, 255, 255, 0.4);
-
   padding: 4.5px;
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   box-sizing: border-box;
 }
-
-/* INNER */
 
 .balance-card-inner {
   width: 199px;
   height: 168px;
-
   border-radius: 11px;
-
   background: rgba(255, 255, 255, 0.7);
-
   padding: 8px;
-
   box-sizing: border-box;
 }
 
-/* =========================
-   TOP
-========================= */
+/* ---- top row ---- */
 
 .balance-top {
   display: flex;
@@ -208,8 +317,6 @@
   gap: 8px;
 }
 
-/* AVATAR IMAGE */
-
 .avatar {
   width: 25.83px;
   height: 25.83px;
@@ -218,8 +325,6 @@
 
   object-fit: cover;
 }
-
-/* USER TEXT */
 
 .user-info-text {
   display: flex;
@@ -234,26 +339,20 @@
   font-size: 8.61px;
   font-weight: 700;
   line-height: 100%;
-
-  color: #0D0D0C;
+  color: #0d0d0c;
   margin: 0;
 }
 
 .user-info p {
   width: 44px;
   height: 8px;
-
   margin-top: 6px;
-
   font-family: "Inter", sans-serif;
   font-size: 6.46px;
   font-weight: 400;
   line-height: 100%;
-
   color: rgba(13, 13, 12, 0.6);
 }
-
-/* NOTIFICATION */
 
 .notification {
   width: 17.22px;
@@ -261,26 +360,20 @@
   align-self: center;
   border-radius: 5px;
   background: rgba(255, 250, 250, 0.2);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #111;
-
   flex-shrink: 0;
 }
 
 .notification svg {
   width: 12.91px;
   height: 12.91px;
-
   stroke-width: 1.8;
 }
 
-/* =========================
-   BALANCE
-========================= */
+/* ---- balance middle ---- */
 
 .balance-middle {
   text-align: left;
@@ -302,20 +395,14 @@
   margin-bottom: -5px;
 }
 
-/* DIVIDER */
-
 .balance-divider {
   margin: 14px 0 12px;
-
   width: 100%;
   height: 0.5px;
-
   background: rgba(255, 255, 255, 0.24);
 }
 
-/* =========================
-   ACTIONS
-========================= */
+/* ---- balance actions ---- */
 
 .balance-actions {
   display: flex;
@@ -326,19 +413,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 6px;
 }
-
-/* ICON CONTAINER */
 
 .icon-box {
   width: 32.28px;
   height: 32.28px;
   border-radius: 9px;
-
-  background: rgba(255, 255, 255, 0.20);
-
+  background: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -355,51 +437,33 @@
   color: #1d1d1d;
   white-space: nowrap;
 }
-/* ======================
+
+/* =========================
    ACTIVITY CARD
-====================== */
+========================= */
 
 .activity-card {
   position: absolute;
-
   top: 150px;
   left: -28px;
-
   width: 254px;
   height: 117px;
-
   border-radius: 12px;
-
   background: rgba(255, 255, 255, 0.4);
-
   padding: 4px;
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-
   box-sizing: border-box;
 }
-
-/* =========================
-   INNER CARD
-========================= */
 
 .activity-card-inner {
   width: 100%;
   height: 100%;
-
   border-radius: 11px;
-
   background: rgba(255, 255, 255, 0.7);
-
   padding: 8px;
-
   box-sizing: border-box;
 }
-
-/* =========================
-   TITLE
-========================= */
 
 .activity-card h3 {
   font-size: 12.63px;
@@ -409,10 +473,6 @@
   margin: 0 0 14px 0;
   color: #0d0d0c;
 }
-
-/* =========================
-   TABS
-========================= */
 
 .activity-tabs {
   display: flex;
@@ -424,20 +484,14 @@
 .activity-tabs span {
   height: 18px;
   padding: 0 6.5px;
-
   border-radius: 999px;
-
   background: #ffffff;
-
   font-size: 7.58px;
   font-weight: 500;
-
   color: #1d1d1d;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   white-space: nowrap;
 }
 
@@ -446,17 +500,11 @@
   color: #ffffff;
 }
 
-/* =========================
-   CONTENT
-========================= */
-
 .activity-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
-/* LEFT */
 
 .activity-left {
   display: flex;
@@ -464,30 +512,21 @@
   gap: 10px;
 }
 
-/* ICON BOX */
-
 .arrow-box {
   width: 30.3px;
   height: 30.3px;
-
   border-radius: 10.1px;
-
   background: #9b7cff;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: white;
   font-size: 15px;
-
   flex-shrink: 0;
 }
 
-/* TEXT */
-
 .activity-left h4 {
-  color: #0B0B0B;
+  color: #0b0b0b;
   margin: 0;
   font-size: 10.1px;
   font-weight: 400;
@@ -513,19 +552,11 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
-.activity-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .activity-left > div:last-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-/* PRICE */
 
 .activity-content > h4 {
   color: #0d0d0c;
@@ -535,11 +566,66 @@
   line-height: 15.15px;
 }
 
+/* =========================
+   FLOATING EFFECT (existing)
+========================= */
+
+.balance-card,
+.activity-card {
+  z-index: 5;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+
+  animation: floating 4s ease-in-out infinite;
+}
+
+.balance-card {
+  animation-delay: 0s;
+}
+
+.activity-card {
+  animation-delay: 1.5s;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.balance-card:hover,
+.activity-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   TRUSTED SECTION
+========================= */
+
 .trusted {
   display: flex;
   text-align: left;
   flex-direction: column;
   gap: 16px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms;
+}
+
+.trusted--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .trusted h3 {
@@ -550,7 +636,7 @@
 
   text-transform: capitalize;
 
-  color: #E9F4F9;
+  color: #e9f4f9;
 
   margin: 0;
 }
@@ -566,16 +652,18 @@
 .brand {
   display: flex;
   align-items: center;
-
   gap: 6px;
-
-  color: #5D7083;
-
+  color: #5d7083;
   font-family: "Archivo", sans-serif;
   font-size: 14px;
   font-weight: 500;
-
   white-space: nowrap;
+  transition: color 300ms ease, transform 250ms ease;
+}
+
+.brand:hover {
+  color: #b0c4d9;
+  transform: translateY(-2px);
 }
 
 .logo-icon {
@@ -587,8 +675,7 @@
 .shells .logo-icon {
   width: 18px;
   height: 18px;
-
-  border: 2px solid #5D7083;
+  border: 2px solid #5d7083;
   border-radius: 50%;
 }
 
@@ -596,64 +683,37 @@
   content: "";
   position: absolute;
   inset: 4px;
-  border: 2px solid #5D7083;
+  border: 2px solid #5d7083;
   border-radius: 50%;
 }
-
 
 .smartfinder .logo-icon {
   width: 16px;
   height: 16px;
-
-  background: #5D7083;
-
-  clip-path: polygon(
-    50% 0%,
-    100% 38%,
-    82% 100%,
-    18% 100%,
-    0% 38%
-  );
+  background: #5d7083;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
 }
 
 .artvenue .logo-icon {
   width: 20px;
   height: 14px;
-
   background:
-    linear-gradient(
-      45deg,
-      transparent 40%,
-      #5D7083 40% 60%,
-      transparent 60%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 40%,
-      #5D7083 40% 60%,
-      transparent 60%
-    );
+    linear-gradient(45deg, transparent 40%, #5d7083 40% 60%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, #5d7083 40% 60%, transparent 60%);
 }
 
 .kontrastr .logo-icon {
   width: 14px;
   height: 14px;
-
   border-radius: 50%;
+  background: linear-gradient(90deg, #5d7083 50%, transparent 50%);
 
-  background: linear-gradient(
-    90deg,
-    #5D7083 50%,
-    transparent 50%
-  );
-
-  border: 2px solid #5D7083;
+  border: 2px solid #5d7083;
 }
 
 .waves .logo-icon {
   width: 16px;
   height: 16px;
-
   display: flex;
   gap: 2px;
 }
@@ -661,63 +721,145 @@
 .waves .logo-icon::before,
 .waves .logo-icon::after {
   content: "";
-
   width: 2px;
   height: 100%;
-
-  background: #5D7083;
-
+  background: #5d7083;
   box-shadow:
-    4px 0 #5D7083,
-    8px 0 #5D7083;
+    4px 0 #5d7083,
+    8px 0 #5d7083;
 }
 
 /* =========================
-   FLOATING EFFECT
+   SCROLL-TRIGGERED COUNT UP
 ========================= */
 
-.balance-card,
-.activity-card {
-  z-index: 5;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.15),
-    0 4px 10px rgba(0, 0, 0, 0.08);
-
-  animation: floating 4s ease-in-out infinite;
+.balance-amount,
+.activity-amount {
+  font-variant-numeric: tabular-nums;
 }
 
-/* Different timing */
+/* =========================
+   REDUCED MOTION
+========================= */
 
-.balance-card {
-  animation-delay: 0s;
-}
-
-.activity-card {
-  animation-delay: 1.5s;
-}
-
-/* Floating Animation */
-
-@keyframes floating {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-
-  100% {
-    transform: translateY(0px);
+@media (prefers-reduced-motion: reduce) {
+  .hero-text,
+  .hero-text__title,
+  .hero-text__desc,
+  .hero-buttons,
+  .hero-visual,
+  .balance-card,
+  .activity-card,
+  .trusted {
+    transition: none !important;
+    opacity: 1;
+    transform: none;
   }
 }
 
-/* Hover Effect */
+/* =========================
+   RESPONSIVE
+========================= */
 
-.balance-card:hover,
-.activity-card:hover {
-  transform: translateY(-6px) scale(1.02);
+@media (max-width: 1024px) {
+  .hero {
+    padding: 140px 40px 80px;
+  }
 
-  transition: all 0.3s ease;
+  .hero-content {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-image {
+    width: 300px;
+    height: auto;
+  }
+
+  .balance-card {
+    top: 15px;
+    left: auto;
+    right: 10px;
+  }
+
+  .activity-card {
+    top: 120px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 20px 60px;
+  }
+
+  .hero-text h1 {
+    font-size: 42px;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 14px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    height: 44px;
+  }
+
+  .hero-visual {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .balance-card {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+  }
+
+  .activity-card {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 100px 16px 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+  }
+
+  .hero-glow {
+    width: 200px;
+    height: 200px;
+    right: 20px;
+    top: 0;
+  }
+
+  .main-image {
+    width: 100%;
+    height: auto;
+  }
 }
