@@ -1,0 +1,178 @@
+.cta {
+  position: relative;
+  width: 100%;
+  padding: 127px 81px 140px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* =========================
+   BG TEXT
+========================= */
+
+.cta-bg-text {
+  position: absolute;
+  top: -160px;
+  right: -75px;
+  font-family: "Archivo", sans-serif;
+  font-size: 585px;
+  font-weight: 500;
+  line-height: 120%;
+
+  color: transparent;
+  -webkit-text-stroke: 1.59px rgba(0, 180, 253, 0.5);
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+
+  /* FADE EFFECT */
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.55) 45%,
+    rgba(0,0,0,0.18) 75%,
+    rgba(0,0,0,0) 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.55) 45%,
+    rgba(0,0,0,0.18) 75%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* =========================
+   CARD
+========================= */
+
+.cta-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 427px;
+  border-radius: 27px;
+  padding: 112px 65px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    99.21deg,
+    #031E2A -12.22%,
+    #000D12 59.26%
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* =========================
+   LEFT
+========================= */
+
+.cta-left {
+  width: 607.83px;
+}
+
+.cta-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 32px;
+}
+
+.cta-text h2 {
+  font-family: "Archivo", sans-serif;
+  font-size: 53px;
+  font-weight: 400;
+  line-height: 120%;
+
+  letter-spacing: -0.01em;
+
+  color: #E9F4F9;
+
+  margin: 0;
+
+  text-align: left;
+}
+
+.cta-text p {
+  width: 462.91px;
+
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+
+  color: rgba(233, 244, 249, 0.8);
+
+  margin: 0;
+
+  text-align: left;
+}
+
+/* =========================
+   RIGHT
+========================= */
+
+.cta-right {
+  width: 458px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 40px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+
+  .cta-card {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 80px;
+  }
+
+  .cta-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .cta {
+    padding: 80px 20px;
+  }
+
+  .cta-card {
+    padding: 60px 24px;
+  }
+
+  .cta-text h2 {
+    font-size: 38px;
+  }
+
+  .cta-text p {
+    width: 100%;
+  }
+
+  .cta-right {
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .cta-right button {
+    width: 100%;
+  }
+
+  .cta-bg-text {
+    font-size: 260px;
+  }
+}

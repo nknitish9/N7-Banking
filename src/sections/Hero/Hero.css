@@ -1,0 +1,723 @@
+.hero {
+  margin: 0;
+  padding: 150px 80px 105px;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 135px;
+}
+
+.hero-text {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  gap: 57px;
+}
+
+.hero-heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-text h1 {
+  font-family: "Archivo", sans-serif;
+  font-size: 67px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #E9F4F9;
+  margin: 0;
+}
+
+.hero-text p {
+  max-width: 400px;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+  color: rgba(233, 244, 249, 0.7);
+  margin: 0;
+}
+
+.hero-buttons {
+  width: 438px;
+  height: 49px;
+  display: flex;
+  gap: 20px;
+}
+
+.primary-btn {
+  width: 210px;
+  height: 49px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    106.53deg,
+    #00b4fd -5.68%,
+    #003ace 86.98%
+  );
+
+  color: white;
+  font-family: "Chivo Mono", monospace;
+  font-size: 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 6px 25px rgba(0, 180, 253, 0.35),
+    0 4px 10px rgba(0, 58, 206, 0.25);
+
+  filter: brightness(1.08);
+}
+
+.secondary-btn {
+  width: 208px;
+  height: 49px;
+  border: 1px solid #e9f4f9;
+  border-radius: 10px;
+  background: transparent;
+  color: #e9f4f9;
+  font-family: "Chivo Mono", monospace;
+  font-size: 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: #E9F4F9;
+  color: #000D12;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(233, 244, 249, 0.12);
+}
+
+.primary-btn,
+.secondary-btn {
+  transition: all 0.3s ease;
+}
+
+.hero-visual {
+  position: relative;
+  width: 562px;
+  height: 230px;
+  overflow: visible;
+}
+
+.hero-glow {
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  right: 80px;
+  top: -50px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    103.43deg,
+    #00B4FD -1.02%,
+    #003ACE 83.53%
+  );
+
+  opacity: 0.35;
+
+  filter: blur(100px);
+
+  z-index: 0;
+}
+
+.balance-card,
+.activity-card {
+  position: absolute;
+  z-index: 5;
+}
+
+/* Main Image */
+
+.main-image {
+  position: relative;
+  z-index: 1;
+  width: 362.64px;
+  height: 300.71px;
+  object-fit: cover;
+  border-radius: 32px;
+  opacity: 1;
+}
+
+/* ======================
+   BALANCE CARD
+====================== */
+
+.balance-card {
+  position: absolute;
+
+  top: 23px;
+  left: 353px;
+
+  width: 208px;
+  height: 177px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  padding: 4.5px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-sizing: border-box;
+}
+
+/* INNER */
+
+.balance-card-inner {
+  width: 199px;
+  height: 168px;
+
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  padding: 8px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   TOP
+========================= */
+
+.balance-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* AVATAR IMAGE */
+
+.avatar {
+  width: 25.83px;
+  height: 25.83px;
+
+  border-radius: 8.16px;
+
+  object-fit: cover;
+}
+
+/* USER TEXT */
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-info h4 {
+  width: 45px;
+  height: 8px;
+  text-align: left;
+  font-size: 8.61px;
+  font-weight: 700;
+  line-height: 100%;
+
+  color: #0D0D0C;
+  margin: 0;
+}
+
+.user-info p {
+  width: 44px;
+  height: 8px;
+
+  margin-top: 6px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 6.46px;
+  font-weight: 400;
+  line-height: 100%;
+
+  color: rgba(13, 13, 12, 0.6);
+}
+
+/* NOTIFICATION */
+
+.notification {
+  width: 17.22px;
+  height: 17.22px;
+  align-self: center;
+  border-radius: 5px;
+  background: rgba(255, 250, 250, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #111;
+
+  flex-shrink: 0;
+}
+
+.notification svg {
+  width: 12.91px;
+  height: 12.91px;
+
+  stroke-width: 1.8;
+}
+
+/* =========================
+   BALANCE
+========================= */
+
+.balance-middle {
+  text-align: left;
+}
+
+.balance-middle span {
+  font-size: 7.53px;
+  font-weight: 400;
+  line-height: 11.83px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.balance-middle h2 {
+  font-size: 15.07px;
+  font-family: "Gilroy", sans-serif;
+  font-weight: 650;
+  line-height: 19.37px;
+  color: #081e69;
+  margin-bottom: -5px;
+}
+
+/* DIVIDER */
+
+.balance-divider {
+  margin: 14px 0 12px;
+
+  width: 100%;
+  height: 0.5px;
+
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.balance-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+}
+
+/* ICON CONTAINER */
+
+.icon-box {
+  width: 32.28px;
+  height: 32.28px;
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.20);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #111;
+}
+
+.action-item p {
+  font-size: 7.53px;
+  font-weight: 700;
+  font-family: "Gilroy", sans-serif;
+  line-height: 11.84px;
+  text-align: center;
+  color: #1d1d1d;
+  white-space: nowrap;
+}
+/* ======================
+   ACTIVITY CARD
+====================== */
+
+.activity-card {
+  position: absolute;
+
+  top: 150px;
+  left: -28px;
+
+  width: 254px;
+  height: 117px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  padding: 4px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   INNER CARD
+========================= */
+
+.activity-card-inner {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  padding: 8px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.activity-card h3 {
+  font-size: 12.63px;
+  line-height: 17.68px;
+  font-weight: 700;
+  justify-self: left;
+  margin: 0 0 14px 0;
+  color: #0d0d0c;
+}
+
+/* =========================
+   TABS
+========================= */
+
+.activity-tabs {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 12px;
+}
+
+.activity-tabs span {
+  height: 18px;
+  padding: 0 6.5px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  font-size: 7.58px;
+  font-weight: 500;
+
+  color: #1d1d1d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+}
+
+.activity-tabs .active {
+  background: #081e69;
+  color: #ffffff;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.activity-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LEFT */
+
+.activity-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ICON BOX */
+
+.arrow-box {
+  width: 30.3px;
+  height: 30.3px;
+
+  border-radius: 10.1px;
+
+  background: #9b7cff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 15px;
+
+  flex-shrink: 0;
+}
+
+/* TEXT */
+
+.activity-left h4 {
+  color: #0B0B0B;
+  margin: 0;
+  font-size: 10.1px;
+  font-weight: 400;
+  font-family: "Gilroy", sans-serif;
+  line-height: 15.15px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.activity-left h4 span {
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+.activity-left p {
+  margin-top: 2px;
+
+  font-size: 7.58px;
+  font-weight: 400;
+  line-height: 12.63px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.activity-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activity-left > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* PRICE */
+
+.activity-content > h4 {
+  color: #0d0d0c;
+  margin: 0;
+  font-size: 10.1px;
+  font-weight: 400;
+  line-height: 15.15px;
+}
+
+.trusted {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trusted h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 130%;
+
+  text-transform: capitalize;
+
+  color: #E9F4F9;
+
+  margin: 0;
+}
+
+.trusted-logos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0.9;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #5D7083;
+
+  font-family: "Archivo", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.logo-icon {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+
+.shells .logo-icon {
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #5D7083;
+  border-radius: 50%;
+}
+
+.shells .logo-icon::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 2px solid #5D7083;
+  border-radius: 50%;
+}
+
+
+.smartfinder .logo-icon {
+  width: 16px;
+  height: 16px;
+
+  background: #5D7083;
+
+  clip-path: polygon(
+    50% 0%,
+    100% 38%,
+    82% 100%,
+    18% 100%,
+    0% 38%
+  );
+}
+
+.artvenue .logo-icon {
+  width: 20px;
+  height: 14px;
+
+  background:
+    linear-gradient(
+      45deg,
+      transparent 40%,
+      #5D7083 40% 60%,
+      transparent 60%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 40%,
+      #5D7083 40% 60%,
+      transparent 60%
+    );
+}
+
+.kontrastr .logo-icon {
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    90deg,
+    #5D7083 50%,
+    transparent 50%
+  );
+
+  border: 2px solid #5D7083;
+}
+
+.waves .logo-icon {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  gap: 2px;
+}
+
+.waves .logo-icon::before,
+.waves .logo-icon::after {
+  content: "";
+
+  width: 2px;
+  height: 100%;
+
+  background: #5D7083;
+
+  box-shadow:
+    4px 0 #5D7083,
+    8px 0 #5D7083;
+}
+
+/* =========================
+   FLOATING EFFECT
+========================= */
+
+.balance-card,
+.activity-card {
+  z-index: 5;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+
+  animation: floating 4s ease-in-out infinite;
+}
+
+/* Different timing */
+
+.balance-card {
+  animation-delay: 0s;
+}
+
+.activity-card {
+  animation-delay: 1.5s;
+}
+
+/* Floating Animation */
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Hover Effect */
+
+.balance-card:hover,
+.activity-card:hover {
+  transform: translateY(-6px) scale(1.02);
+
+  transition: all 0.3s ease;
+}

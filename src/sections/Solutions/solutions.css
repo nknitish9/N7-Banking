@@ -1,0 +1,273 @@
+.solutions {
+  width: 100%;
+  padding: 47px 80px 50px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.solutions-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 90px;
+  align-items: start;
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.solutions-header {
+  width: 433px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 48px;
+
+  position: sticky;
+  top: 120px;
+}
+
+.solutions-header h2 {
+  font-family: "Archivo", sans-serif;
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 120%;
+
+  letter-spacing: -0.01em;
+
+  color: #E9F4F9;
+
+  margin: 0;
+
+  text-align: left;
+}
+
+/* BUTTON */
+
+.solutions-btn {
+  width: 226px;
+  height: 49px;
+  border: 1px solid #E9F4F9;
+  border-radius: 10px;
+  background: transparent;
+  color: #E9F4F9;
+  font-family: "Chivo Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.solutions-btn:hover {
+  background: #E9F4F9;
+  color: #000D12;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(233, 244, 249, 0.12);
+}
+
+/* =========================
+   GRID
+========================= */
+
+.solutions-grid {
+  width: 638px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 76px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.solutions-card {
+  width: 281px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  text-align: left;
+}
+
+/* =========================
+   ICON
+========================= */
+
+.solutions-card-icon {
+  width: 47px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution-icon-img {
+  width: 47px;
+  height: 49px;
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.solutions-badge {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-family: "Chivo Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.solutions-card h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #E9F4F9;
+  margin: 0;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.solutions-card p {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+  color: rgba(233, 244, 249, 0.7);
+  margin: 0;
+}
+
+/* =========================
+   LEARN MORE
+========================= */
+
+.learn-more {
+  gap: 6px;
+  text-decoration: none;
+  color: #00B4FD;
+}
+
+.learn-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #00B4FD;
+  font-family: "Chivo Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.learn-more {
+  position: relative;
+  display: inline-block;
+}
+
+.learn-more::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 32.58px;
+  height: 1px;
+  background: #00B4FD;
+  transition: width 0.3s ease;
+}
+
+.learn-more:hover::after {
+  width: 135px;
+}
+
+.learn-more svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 1.4;
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover svg {
+  transform: translateX(8px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+  .solutions-content {
+    grid-template-columns: 1fr;
+  }
+
+  .solutions-header {
+    position: static;
+  }
+
+  .solutions-grid {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .solutions {
+    padding: 80px 20px;
+  }
+
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solutions-card {
+    width: 100%;
+  }
+
+  .solutions-header h2 {
+    font-size: 30px;
+  }
+}
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+.solutions-glow {
+  position: absolute;
+  width: 556.77px;
+  height: 556.77px;
+  top: 447px;
+  right: -75px;
+  border-radius: 50%;
+  opacity: 0.7;
+  background: linear-gradient(
+    103.43deg,
+    #00B4FD -1.02%,
+    #003ACE 83.53%
+  );
+  filter: blur(200px);
+}
+
+.solutions-glow-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}

@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Chivo+Mono:wght@400&display=swap");
+
+/* =========================
+   HEADER
+========================= */
+
+body {
+  background: #000D12;
+  color: #E9F4F9;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 31px;
+  position: relative;
+  z-index: 100;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  width: 696.76px;
+  height: 29px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 160px;
+
+  padding: 9px 10px;
+
+  border-radius: 12px;
+
+  background: rgba(47, 47, 47, 0.7);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  font-family: "Archivo", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 120%;
+
+  color: #e9f4f9;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
+}
+
+/* =========================
+   RIGHT SECTION
+========================= */
+
+.navbar-right {
+  max-width: 504.46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 20px;
+
+  list-style: none;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+
+  font-family: "Chivo Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 130%;
+  white-space: nowrap;
+
+  text-transform: uppercase;
+
+  color: #e9f4f9;
+
+  cursor: pointer;
+
+  transition: opacity 0.25s ease;
+}
+
+.nav-links li:hover {
+  opacity: 0.75;
+}
+
+/* =========================
+   DROPDOWN ARROW
+========================= */
+
+.nav-links li svg {
+  stroke-width: 1.3;
+  flex-shrink: 0;
+}
+
+/* =========================
+   REQUEST DEMO BUTTON
+========================= */
+
+.demo-btn {
+  width: 161px;
+  height: 26px;
+
+  border: 1px solid #e9f4f9;
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #e9f4f9;
+
+  font-family: "Chivo Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 130%;
+
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.demo-btn:hover {
+  background: #e9f4f9;
+  color: #0d0d0d;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 95%;
+  }
+
+  .navbar-right {
+    width: auto;
+    gap: 24px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .demo-btn {
+    width: 140px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 576px) {
+  .navbar {
+    height: auto;
+
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 14px;
+  }
+
+  .navbar-right {
+    width: 100%;
+
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav-links {
+    width: 100%;
+
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .demo-btn {
+    width: 100%;
+    height: 40px;
+  }
+}

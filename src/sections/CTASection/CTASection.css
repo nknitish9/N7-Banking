@@ -1,0 +1,149 @@
+/* =========================
+   CTA SECTION
+========================= */
+
+.cta-section {
+  width: 100%;
+  background: #000D12;
+  padding: 62px 80px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.cta-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* =========================
+   LEFT
+========================= */
+
+.cta-left {
+  width: 607.83px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cta-left h2 {
+  margin: 0;
+  font-family: "Archivo", sans-serif;
+  font-size: 53px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #E9F4F9;
+  text-align: left;
+}
+
+.cta-left p {
+  width: 480px;
+  margin: 0;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+  color: rgba(233, 244, 249, 0.8);
+  text-align: left;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.cta-buttons {
+  width: 458px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.cta-contact-btn {
+  width: 208px;
+  height: 49px;
+  border-radius: 10px;
+  border: 1px solid #E9F4F9;
+  background: transparent;
+  color: #E9F4F9;
+  font-family: "Chivo Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cta-contact-btn:hover {
+    background: #E9F4F9;
+  color: #000D12;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(233, 244, 249, 0.12);
+}
+
+.cta-request-btn {
+  width: 210px;
+  height: 49px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    106.53deg,
+    #00B4FD -5.68%,
+    #003ACE 86.98%
+  );
+  color: #FFFFFF;
+  font-family: "Chivo Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cta-request-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 6px 25px rgba(0, 180, 253, 0.35),
+    0 4px 10px rgba(0, 58, 206, 0.25);
+
+  filter: brightness(1.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .cta-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .cta-left,
+  .cta-left p,
+  .cta-buttons {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 24px;
+  }
+
+  .cta-left h2 {
+    font-size: 38px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-contact-btn,
+  .cta-request-btn {
+    width: 100%;
+  }
+}
