@@ -10,12 +10,43 @@ body {
 }
 
 .header {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
   display: flex;
   justify-content: center;
   padding-top: 31px;
-  position: relative;
-  z-index: 100;
+
+  /* Initial (pre-mount) state — sits slightly above the viewport, invisible. */
+  opacity: 0;
+  transform: translate3d(0, -24px, 0);
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding-top 350ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform, opacity;
+  pointer-events: none; /* let clicks pass until navbar is reached */
+}
+
+/* Entrance — header slides + fades in once React mounts. */
+.header.is-mounted {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Scrolled state — slimmer top padding so the pill feels "stuck" to the top. */
+.header.is-scrolled {
+  padding-top: 16px;
+}
+
+/* Hidden state — scroll-down hides the header off-screen. */
+.header.is-hidden {
+  transform: translate3d(0, -120%, 0);
+  opacity: 0;
 }
 
 /* =========================
@@ -23,6 +54,7 @@ body {
 ========================= */
 
 .navbar {
+  pointer-events: auto;
   width: 696.76px;
   height: 29px;
 
@@ -34,11 +66,29 @@ body {
   padding: 9px 10px;
 
   border-radius: 12px;
+  border: 1px solid rgba(233, 244, 249, 0);
 
   background: rgba(47, 47, 47, 0.7);
 
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+
+  transition:
+    background-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header.is-scrolled .navbar {
+  background: rgba(16, 22, 26, 0.72);
+  border-color: rgba(233, 244, 249, 0.08);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* =========================
@@ -52,14 +102,25 @@ body {
   line-height: 120%;
 
   color: #e9f4f9;
-
+  text-decoration: none;
   cursor: pointer;
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
   user-select: none;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    letter-spacing 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+  letter-spacing: 0.5px;
+}
+
+.logo:active {
+  transform: scale(0.98);
 }
 
 /* =========================
@@ -68,7 +129,6 @@ body {
 
 .navbar-right {
   max-width: 504.46px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -88,36 +148,63 @@ body {
   list-style: none;
 }
 
-.nav-links li {
-  display: flex;
+.nav-item {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-
+  gap: 4px;
   font-family: "Chivo Mono", monospace;
   font-size: 12px;
   font-weight: 400;
   line-height: 130%;
   white-space: nowrap;
-
   text-transform: uppercase;
-
   color: #e9f4f9;
-
   cursor: pointer;
-
-  transition: opacity 0.25s ease;
+  transition: color 250ms ease, opacity 250ms ease;
 }
 
-.nav-links li:hover {
-  opacity: 0.75;
+/* Animated underline — grows from the left on hover. */
+.nav-item__label {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-item__label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: #e9f4f9;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-item:hover .nav-item__label::after {
+  transform: scaleX(1);
+}
+
+.nav-item:hover {
+  color: #ffffff;
 }
 
 /* =========================
    DROPDOWN ARROW
 ========================= */
 
-.nav-links li svg {
+.nav-arrow {
+  width: 12px;
+  height: 12px;
   stroke-width: 1.3;
   flex-shrink: 0;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-item:hover .nav-arrow {
+  transform: rotate(180deg);
 }
 
 /* =========================
@@ -125,35 +212,64 @@ body {
 ========================= */
 
 .demo-btn {
+  position: relative;
+  overflow: hidden;
   width: 161px;
   height: 26px;
-
   border: 1px solid #e9f4f9;
   border-radius: 6px;
-
   background: transparent;
-
   color: #e9f4f9;
-
   font-family: "Chivo Mono", monospace;
   font-size: 12px;
   font-weight: 400;
   line-height: 130%;
-
   text-transform: uppercase;
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
+  isolation: isolate;
+  transition:
+    color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms ease;
+}
 
-  transition: all 0.3s ease;
+/* Sliding fill — pseudo-element wipes left → right on hover. */
+.demo-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #e9f4f9;
+  transform: translateX(-101%);
+  transform-origin: left center;
+  transition: transform 450ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.demo-btn__label {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .demo-btn:hover {
-  background: #e9f4f9;
   color: #0d0d0d;
+  box-shadow: 0 6px 18px -8px rgba(233, 244, 249, 0.45);
+}
+
+.demo-btn:hover::before {
+  transform: translateX(0);
+}
+
+.demo-btn:hover .demo-btn__label {
+  transform: translateX(2px);
+}
+
+.demo-btn:active {
+  transform: scale(0.97);
 }
 
 /* =========================
@@ -163,6 +279,7 @@ body {
 @media (max-width: 768px) {
   .navbar {
     width: 95%;
+    gap: 24px;
   }
 
   .navbar-right {
@@ -184,6 +301,14 @@ body {
 ========================= */
 
 @media (max-width: 576px) {
+  .header {
+    padding-top: 16px;
+  }
+
+  .header.is-scrolled {
+    padding-top: 10px;
+  }
+
   .navbar {
     height: auto;
 
@@ -210,5 +335,28 @@ body {
   .demo-btn {
     width: 100%;
     height: 40px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .navbar,
+  .logo,
+  .nav-item,
+  .nav-item__label::after,
+  .nav-arrow,
+  .demo-btn,
+  .demo-btn::before,
+  .demo-btn__label {
+    transition: none !important;
+  }
+
+  .header {
+    opacity: 1;
+    transform: none;
   }
 }
