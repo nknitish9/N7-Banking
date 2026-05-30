@@ -127,7 +127,6 @@
   opacity: 0.6;
   z-index: 0;
   user-select: none;
-
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.95) 0%,
@@ -190,7 +189,6 @@
   color: #e9f4f9;
   margin: 0;
   text-align: left;
-
   transition: color 300ms ease;
 }
 
@@ -214,7 +212,6 @@
   left: 218px;
   width: 651.66px;
   height: 461.42px;
-
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -246,7 +243,6 @@
   border-top-left-radius: 18px;
   opacity: 0.9;
   z-index: 1;
-
   transition: opacity 400ms ease;
 }
 
@@ -264,7 +260,6 @@
   border-radius: 5px 5px 14px 14px;
   opacity: 0.9;
   z-index: 1;
-
   transition: opacity 400ms ease;
 }
 
@@ -294,7 +289,6 @@
   height: 461px;
   right: 238px;
   flex-shrink: 0;
-
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -324,7 +318,6 @@
   border-top-right-radius: 18px;
   opacity: 0.9;
   z-index: 1;
-
   transition: opacity 400ms ease;
 }
 
@@ -334,21 +327,14 @@
 
 .core-feature-bottom-line {
   position: absolute;
-
   bottom: -8px;
   left: -57px;
-
   width: 765px;
   height: 38px;
-
   border: 1px solid #00b4fd;
-
   border-radius: 5px 5px 14px 14px;
-
   opacity: 0.9;
-
   z-index: 1;
-
   transition: opacity 400ms ease;
 }
 
@@ -375,7 +361,6 @@
   color: #e9f4f9;
   margin: 0;
   text-align: left;
-
   transition: color 300ms ease;
 }
 
@@ -398,11 +383,8 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 130%;
-
   color: #e9f4f9;
-
   margin: 0;
-
   text-align: left;
 }
 
@@ -422,7 +404,6 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-
   transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -450,7 +431,6 @@
   background: #0066ff;
   flex-shrink: 0;
   margin-top: 2px;
-
   transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
@@ -480,10 +460,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-
   text-decoration: none;
   color: #00b4fd;
-
   position: relative;
 }
 
@@ -498,7 +476,6 @@
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
-
   transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -517,17 +494,6 @@
   transform: translateX(8px);
 }
 
-.learn-line {
-  width: 30px;
-  height: 1px;
-  background: #00b4fd;
-  transition: width 350ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.core-actions .learn-more:hover .learn-line {
-  width: 85px;
-}
-
 /* =========================
    PRIMARY BTN OVERRIDE
 ========================= */
@@ -538,13 +504,11 @@
   border: none;
   border-radius: 10px;
   background: linear-gradient(106.53deg, #00b4fd -5.68%, #003ace 86.98%);
-
   color: white;
   font-family: "Chivo Mono", monospace;
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-
   transition: all 0.3s ease;
 }
 

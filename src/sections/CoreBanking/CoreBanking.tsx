@@ -59,7 +59,6 @@ const CoreBanking = () => {
                 <span className="learn-more__text">LEARN MORE</span>
                 <ArrowRight size={14} className="learn-more__arrow" />
               </div>
-              <div className="learn-line"></div>
             </a>
           </div>
         </div>
