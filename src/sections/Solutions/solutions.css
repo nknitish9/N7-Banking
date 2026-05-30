@@ -108,7 +108,6 @@
   border-radius: 10px;
   background: transparent;
   color: #e9f4f9;
-
   font-family: "Chivo Mono", monospace;
   font-size: 14px;
   font-weight: 400;
@@ -120,7 +119,6 @@
     box-shadow 350ms ease;
 }
 
-/* Slide-in fill for the button */
 .solutions-btn::before {
   content: "";
   position: absolute;

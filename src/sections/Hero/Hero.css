@@ -213,6 +213,9 @@
 }
 
 .secondary-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   width: 208px;
   height: 49px;
   border: 1px solid #e9f4f9;
@@ -223,14 +226,35 @@
   font-size: 15px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition:
+    color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms ease;
+}
+
+.secondary-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #e9f4f9;
+  transform: translateX(-101%);
+  transform-origin: left center;
+  transition: transform 450ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .secondary-btn:hover {
-  background: #e9f4f9;
   color: #000d12;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(233, 244, 249, 0.12);
+}
+
+.secondary-btn:hover::before {
+  transform: translateX(0);
+}
+
+.secondary-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 /* =========================
@@ -772,7 +796,6 @@
   }
 
   .hero-visual {
-    width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -806,7 +829,6 @@
 
   .hero-buttons {
     width: 100%;
-    flex-direction: column;
     align-items: flex-start;
     height: auto;
     gap: 14px;
@@ -840,26 +862,121 @@
 
 @media (max-width: 576px) {
   .hero {
-    padding: 100px 16px 40px;
+    padding: 90px 16px 40px;
   }
 
-  .hero-text h1 {
-    font-size: 32px;
+  .hero-content {
+    gap: 40px;
+  }
+
+  .hero-text__title {
+    font-size: 28px;
+    line-height: 115%;
   }
 
   .hero-text p {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  .hero-text {
+    gap: 36px;
+  }
+
+  .hero-buttons {
+    gap: 12px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .hero-visual {
+    transform: scale(0.82);
+    transform-origin: center top;
   }
 
   .hero-glow {
-    width: 200px;
-    height: 200px;
-    right: 20px;
-    top: 0;
+    width: 180px;
+    height: 180px;
+    right: 10px;
+    top: -20px;
   }
 
   .main-image {
-    width: 100%;
+    width: 280px;
     height: auto;
+  }
+
+  .balance-card {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 180px;
+    margin-top: 16px;
+  }
+
+  .balance-card-inner {
+    width: 210px;
+    height: 172px;
+  }
+
+  .activity-card {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 110px;
+    margin-top: 12px;
+  }
+
+  /* trusted section */
+
+  .trusted {
+    gap: 12px;
+  }
+
+  .trusted h3 {
+    font-size: 14px;
+  }
+
+  .trusted-logos {
+    gap: 16px;
+  }
+
+  .brand {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .shells .logo-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .shells .logo-icon::before {
+    inset: 3px;
+  }
+
+  .smartfinder .logo-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .artvenue .logo-icon {
+    width: 16px;
+    height: 12px;
+  }
+
+  .kontrastr .logo-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .waves .logo-icon {
+    width: 13px;
+    height: 13px;
   }
 }

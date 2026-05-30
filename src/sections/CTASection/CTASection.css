@@ -226,11 +226,6 @@
     font-size: 14px;
   }
 
-  .cta-buttons {
-    flex-direction: column;
-    gap: 16px;
-  }
-
   .cta-contact-btn,
   .cta-request-btn {
     width: 100%;

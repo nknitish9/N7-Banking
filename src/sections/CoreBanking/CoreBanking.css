@@ -208,6 +208,7 @@
 ========================= */
 
 .core-banking-right {
+  align-self: self-end;
   position: relative;
   left: 218px;
   width: 651.66px;
@@ -539,29 +540,13 @@
     align-items: flex-start;
   }
 
-  .core-banking-right {
-    left: 0;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 651.66 / 461.42;
-  }
-
-  .core-dashboard-image {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-  }
-
-  .core-top-line,
-  .core-bottom-line {
-    display: none;
-  }
-
   .core-features-content {
     flex-direction: column;
     gap: 80px;
+  }
+
+  .core-features-left {
+    left: -39%;
   }
 
   .core-features-right {
@@ -589,35 +574,6 @@
 
   .core-banking-left p {
     width: 100%;
-  }
-
-  .core-actions .primary-btn {
-    width: 100%;
-    height: 44px;
-  }
-
-  .core-features-content {
-    margin-top: 80px;
-    gap: 60px;
-  }
-
-  .core-features-left {
-    width: 100%;
-    height: auto;
-    right: 0;
-  }
-
-  .core-feature-image {
-    position: relative;
-    width: 100%;
-    height: auto;
-    left: 0;
-    top: 0;
-  }
-
-  .core-feature-top-line,
-  .core-feature-bottom-line {
-    display: none;
   }
 
   .core-features-right h3 {
