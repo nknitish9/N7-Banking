@@ -4,9 +4,52 @@
 
 .cta-section {
   width: 100%;
-  background: #000D12;
+  background: #000d12;
   padding: 62px 80px;
   box-sizing: border-box;
+}
+
+/* =========================
+   ENTRANCE ANIMATIONS
+========================= */
+
+.cta-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 120ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+}
+
+.cta-left--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cta-buttons {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 250ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 250ms;
+}
+
+.cta-buttons--visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* =========================
@@ -37,7 +80,7 @@
   font-weight: 400;
   line-height: 120%;
   letter-spacing: -0.01em;
-  color: #E9F4F9;
+  color: #e9f4f9;
   text-align: left;
 }
 
@@ -63,43 +106,77 @@
   gap: 40px;
 }
 
+/* ---- contact (outline) ---- */
+
 .cta-contact-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
   width: 208px;
   height: 49px;
   border-radius: 10px;
-  border: 1px solid #E9F4F9;
+  border: 1px solid #e9f4f9;
   background: transparent;
-  color: #E9F4F9;
+  color: #e9f4f9;
+
   font-family: "Chivo Mono", monospace;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
+
+  transition:
+    color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms ease;
+}
+
+.cta-contact-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #e9f4f9;
+  transform: translateX(-101%);
+  transform-origin: left center;
+  transition: transform 450ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .cta-contact-btn:hover {
-    background: #E9F4F9;
-  color: #000D12;
+  color: #000d12;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(233, 244, 249, 0.12);
 }
+
+.cta-contact-btn:hover::before {
+  transform: translateX(0);
+}
+
+.cta-contact-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* ---- request (gradient) ---- */
 
 .cta-request-btn {
   width: 210px;
   height: 49px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(
-    106.53deg,
-    #00B4FD -5.68%,
-    #003ACE 86.98%
-  );
-  color: #FFFFFF;
+  background: linear-gradient(106.53deg, #00b4fd -5.68%, #003ace 86.98%);
+  color: #ffffff;
+
   font-family: "Chivo Mono", monospace;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
+
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    filter 300ms ease;
 }
 
 .cta-request-btn:hover {
@@ -107,8 +184,11 @@
   box-shadow:
     0 6px 25px rgba(0, 180, 253, 0.35),
     0 4px 10px rgba(0, 58, 206, 0.25);
-
   filter: brightness(1.08);
+}
+
+.cta-request-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 /* =========================
@@ -131,19 +211,65 @@
 
 @media (max-width: 768px) {
   .cta-section {
-    padding: 60px 24px;
+    padding: 48px 24px;
   }
 
   .cta-left h2 {
-    font-size: 38px;
+    font-size: 32px;
+  }
+
+  .cta-left h2 br {
+    display: none;
+  }
+
+  .cta-left p {
+    font-size: 14px;
   }
 
   .cta-buttons {
     flex-direction: column;
+    gap: 16px;
   }
 
   .cta-contact-btn,
   .cta-request-btn {
     width: 100%;
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-section {
+    padding: 32px 16px;
+  }
+
+  .cta-left {
+    gap: 24px;
+  }
+
+  .cta-left h2 {
+    font-size: 26px;
+  }
+
+  .cta-left p {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-section,
+  .cta-left,
+  .cta-buttons,
+  .cta-contact-btn,
+  .cta-contact-btn::before,
+  .cta-request-btn {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }

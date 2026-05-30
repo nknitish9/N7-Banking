@@ -1,10 +1,7 @@
-import "./CaseStudies.css";
 import { useEffect, useState } from "react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Zap,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Zap } from "lucide-react";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import "./CaseStudies.css";
 
 const caseStudies = [
   {
@@ -27,70 +24,59 @@ const caseStudies = [
 
 const CaseStudies = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [sectionRef, sectionVisible] =
+    useIntersectionObserver<HTMLElement>({ threshold: 0.1 });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveIndex(
-        (prev) => (prev + 1) % caseStudies.length
-      );
+      setActiveIndex((prev) => (prev + 1) % caseStudies.length);
     }, 4000);
-
     return () => clearInterval(timer);
   }, []);
 
   const prevSlide = () => {
     setActiveIndex(
-      (prev) =>
-        (prev - 1 + caseStudies.length) %
-        caseStudies.length
+      (prev) => (prev - 1 + caseStudies.length) % caseStudies.length,
     );
   };
 
   const nextSlide = () => {
-    setActiveIndex(
-      (prev) => (prev + 1) % caseStudies.length
-    );
+    setActiveIndex((prev) => (prev + 1) % caseStudies.length);
   };
 
   return (
-    <section className="case-studies">
-
-      <h2 className="case-title">
+    <section
+      className={`case-studies ${sectionVisible ? "case-studies--visible" : ""}`}
+      ref={sectionRef}
+    >
+      <h2 className={`case-title ${sectionVisible ? "case-title--visible" : ""}`}>
         Our Case Studies
       </h2>
 
-      <div className="case-carousel">
-
+      <div
+        className={`case-carousel ${sectionVisible ? "case-carousel--visible" : ""}`}
+      >
         <div className="fade-left"></div>
         <div className="fade-right"></div>
 
         {caseStudies.map((item, index) => {
           let position = "hidden";
 
-          if (index === activeIndex)
-            position = "active";
-
+          if (index === activeIndex) position = "active";
           else if (
             index ===
-            (activeIndex - 1 + caseStudies.length) %
-              caseStudies.length
+            (activeIndex - 1 + caseStudies.length) % caseStudies.length
           )
             position = "prev";
-
           else if (
             index ===
-            (activeIndex + 1) %
-              caseStudies.length
+            (activeIndex + 1) % caseStudies.length
           )
             position = "next";
 
           return (
-            <div
-              key={index}
-              className={`case-slide ${position}`}
-            >
+            <div key={index} className={`case-slide ${position}`}>
               <div className="case-card">
-
                 <div className="case-image">
                   <img
                     src="/svg/Frame 54.svg"
@@ -100,33 +86,21 @@ const CaseStudies = () => {
                 </div>
 
                 <div className="case-content">
-
                   <div>
-                    <span className="case-tag">
-                      GETTING STARTED
-                    </span>
+                    <span className="case-tag">GETTING STARTED</span>
 
-                    <h3>
-                      {item.title}
-                    </h3>
+                    <h3>{item.title}</h3>
 
                     <div className="case-company">
                       <div className="company-icon">
-                        <Zap
-                          size={16}
-                          fill="currentColor"
-                        />
+                        <Zap size={16} fill="currentColor" />
                       </div>
 
-                      <span>
-                        {item.company}
-                      </span>
+                      <span>{item.company}</span>
                     </div>
                   </div>
 
-                  <button className="case-btn">
-                    READ MORE
-                  </button>
+                  <button className="case-btn">READ MORE</button>
                 </div>
               </div>
             </div>
@@ -134,12 +108,9 @@ const CaseStudies = () => {
         })}
       </div>
 
-      <div className="case-footer">
+      <div className={`case-footer ${sectionVisible ? "case-footer--visible" : ""}`}>
         <div className="case-pagination">
-          <button
-            className="nav-btn"
-            onClick={prevSlide}
-          >
+          <button className="nav-btn" onClick={prevSlide} aria-label="Previous">
             <ArrowLeft size={18} />
           </button>
 
@@ -147,22 +118,14 @@ const CaseStudies = () => {
             {caseStudies.map((_, index) => (
               <span
                 key={index}
-                className={
-                  index === activeIndex
-                    ? "active"
-                    : ""
-                }
+                className={index === activeIndex ? "active" : ""}
               />
             ))}
           </div>
 
-          <button
-            className="nav-btn"
-            onClick={nextSlide}
-          >
+          <button className="nav-btn" onClick={nextSlide} aria-label="Next">
             <ArrowRight size={18} />
           </button>
-
         </div>
 
         <a href="#" className="view-all">
@@ -171,9 +134,7 @@ const CaseStudies = () => {
             <ArrowRight size={14} />
           </div>
         </a>
-
       </div>
-
     </section>
   );
 };

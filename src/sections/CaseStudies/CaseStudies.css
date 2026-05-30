@@ -5,10 +5,70 @@
 .case-studies {
   width: 100%;
   padding: 50px 80px 193px;
-  background: #000D12;
+  background: #000d12;
   box-sizing: border-box;
   overflow: hidden;
 }
+
+/* =========================
+   ENTRANCE ANIMATIONS
+========================= */
+
+.case-studies {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case-studies--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 120ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+}
+
+.case-title--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-carousel {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 250ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 250ms;
+}
+
+.case-carousel--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-footer {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 400ms,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 400ms;
+}
+
+.case-footer--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   TITLE
+========================= */
 
 .case-title {
   margin: 0 0 78px;
@@ -18,7 +78,7 @@
   font-weight: 400;
   line-height: 120%;
   letter-spacing: -0.01em;
-  color: #E9F4F9;
+  color: #e9f4f9;
 }
 
 /* =========================
@@ -40,33 +100,20 @@
 .fade-right {
   position: absolute;
   top: 0;
-
   width: 220px;
   height: 100%;
-
   z-index: 20;
-
   pointer-events: none;
 }
 
 .fade-left {
   left: 0;
-
-  background: linear-gradient(
-    to right,
-    #000D12,
-    transparent
-  );
+  background: linear-gradient(to right, #000d12, transparent);
 }
 
 .fade-right {
   right: 0;
-
-  background: linear-gradient(
-    to left,
-    #000D12,
-    transparent
-  );
+  background: linear-gradient(to left, #000d12, transparent);
 }
 
 /* =========================
@@ -77,29 +124,23 @@
   position: absolute;
   top: 0;
   left: 50%;
-  transition: all 0.8s ease;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .case-slide.active {
-  transform:
-    translateX(-50%)
-    scale(1);
+  transform: translateX(-50%) scale(1);
   opacity: 1;
   z-index: 5;
 }
 
 .case-slide.prev {
-  transform:
-    translateX(-63%)
-    scale(0.93);
+  transform: translateX(-63%) scale(0.93);
   opacity: 0.3;
   z-index: 2;
 }
 
 .case-slide.next {
-  transform:
-    translateX(-28%)
-    scale(0.82);
+  transform: translateX(-28%) scale(0.82);
   opacity: 0.3;
   z-index: 2;
 }
@@ -116,17 +157,24 @@
 .case-card {
   width: 1060px;
   height: 470px;
-
-  background: #01141B;
-
+  background: #01141b;
   border-radius: 18px;
-
   padding: 25px 24px;
-
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
+
+  border: 1px solid rgba(0, 180, 253, 0);
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 400ms ease,
+    border-color 400ms ease;
+}
+
+.case-slide.active .case-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(0, 180, 253, 0.1);
+  border-color: rgba(0, 180, 253, 0.2);
 }
 
 /* =========================
@@ -136,12 +184,19 @@
 .case-image {
   width: 448px;
   height: 405px;
-  background: #07193C;
+  background: #07193c;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
+  transition: transform 400ms ease, box-shadow 400ms ease;
+}
+
+.case-slide.active .case-card:hover .case-image {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 180, 253, 0.08);
 }
 
 .case-image-svg {
@@ -150,7 +205,6 @@
   object-fit: cover;
   display: block;
 }
-
 
 /* =========================
    RIGHT CONTENT
@@ -166,22 +220,13 @@
   justify-content: space-between;
 }
 
-.case-top {
-  display: flex;
-  flex-direction: column;
-
-  gap: 24px;
-}
-
 .case-tag {
   font-family: "Chivo Mono", monospace;
   font-size: 12px;
   font-weight: 400;
   line-height: 130%;
-
   text-transform: uppercase;
-
-  color: #2490BB;
+  color: #2490bb;
 }
 
 .case-content h3 {
@@ -191,8 +236,13 @@
   font-size: 43px;
   font-weight: 400;
   line-height: 120%;
+  color: #e9f4f9;
 
-  color: #E9F4F9;
+  transition: color 300ms ease;
+}
+
+.case-slide.active .case-card:hover .case-content h3 {
+  color: #ffffff;
 }
 
 /* =========================
@@ -209,16 +259,12 @@
 .company-icon {
   width: 30px;
   height: 30px;
-
   border-radius: 50%;
-
-  background: #586E84;
-
+  background: #586e84;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: #01141B;
+  color: #01141b;
 }
 
 .case-company span {
@@ -226,8 +272,7 @@
   font-size: 22px;
   font-weight: 700;
   line-height: 110%;
-
-  color: #586E84;
+  color: #586e84;
 }
 
 /* =========================
@@ -247,12 +292,15 @@
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
+
+  transition:
+    all 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .case-btn:hover {
   background: rgba(233, 244, 249, 0.08);
-  border-color: #00B4FD;
-  color: #E9F4F9;
+  border-color: #00b4fd;
+  color: #e9f4f9;
   transform: translateY(-2px);
   box-shadow: 0 0 20px rgba(0, 180, 253, 0.15);
 }
@@ -288,13 +336,19 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1.36px solid #00B4FD;
+  border: 1.36px solid #00b4fd;
   background: transparent;
-  color: #00B4FD;
+  color: #00b4fd;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 250ms ease;
 }
 
 .nav-btn:hover {
@@ -303,7 +357,7 @@
     rgba(0, 180, 253, 0.15) -5.68%,
     rgba(0, 58, 206, 0.15) 86.98%
   );
-  border-color: #00B4FD;
+  border-color: #00b4fd;
   box-shadow: 0 0 20px rgba(0, 180, 253, 0.25);
   transform: translateY(-2px);
 }
@@ -320,10 +374,11 @@
   transform: translateY(0);
 }
 
+/* pagination dots */
+
 .pagination-dots {
   display: flex;
   align-items: center;
-
   gap: 8px;
 }
 
@@ -331,7 +386,9 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1px solid #0B4B63;
+  border: 1px solid #0b4b63;
+
+  transition: all 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pagination-dots .active {
@@ -339,7 +396,7 @@
   height: 12px;
   border: none;
   border-radius: 999px;
-  background: #0B4B63;
+  background: #0b4b63;
 }
 
 /* =========================
@@ -351,6 +408,12 @@
   right: 0;
   text-decoration: none;
   display: inline-block;
+
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.view-all:hover {
+  transform: translateX(4px);
 }
 
 .view-all-content {
@@ -362,7 +425,7 @@
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
-  color: #00B4FD;
+  color: #00b4fd;
 }
 
 .view-all-content::after {
@@ -372,8 +435,8 @@
   bottom: -4px;
   width: 33px;
   height: 1px;
-  background: #00B4FD;
-  transition: width 0.3s ease;
+  background: #00b4fd;
+  transition: width 350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .view-all:hover .view-all-content::after {
@@ -381,11 +444,11 @@
 }
 
 .view-all svg {
-  transition: transform 0.3s ease;
+  transition: transform 350ms ease;
 }
 
 .view-all:hover svg {
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
 
 /* =========================
@@ -393,6 +456,10 @@
 ========================= */
 
 @media (max-width: 1200px) {
+  .case-studies {
+    padding: 50px 40px 120px;
+  }
+
   .case-card {
     width: 900px;
   }
@@ -400,25 +467,36 @@
   .case-footer {
     width: 900px;
   }
+
+  .case-content h3 {
+    font-size: 34px;
+  }
+
+  .fade-left,
+  .fade-right {
+    width: 120px;
+  }
 }
 
 @media (max-width: 1024px) {
   .case-card {
     width: 100%;
     height: auto;
-
     flex-direction: column;
-
     gap: 30px;
+    padding: 20px;
   }
 
   .case-content {
     width: 100%;
     margin-left: 0;
+    height: auto;
+    gap: 20px;
   }
 
   .case-image {
     width: 100%;
+    height: 240px;
   }
 
   .case-btn {
@@ -428,19 +506,204 @@
   .case-footer {
     width: 100%;
   }
+
+  .case-content h3 {
+    font-size: 28px;
+  }
+
+  .case-slide.prev {
+    transform: translateX(-100%) scale(0.9);
+  }
+
+  .case-slide.next {
+    transform: translateX(0%) scale(0.85);
+  }
 }
 
 @media (max-width: 768px) {
   .case-studies {
-    padding: 80px 24px;
+    padding: 48px 24px 80px;
   }
 
   .case-title {
-    font-size: 38px;
+    font-size: 32px;
+    margin-bottom: 48px;
+  }
+
+  .case-carousel {
+    height: auto;
+    min-height: 480px;
+  }
+
+  .case-slide {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100%;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .case-slide.active {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+  }
+
+  .case-slide.prev {
+    transform: translateX(-80%) scale(0.88);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .case-slide.next {
+    transform: translateX(-20%) scale(0.88);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .case-slide.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .case-card {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .case-content {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    gap: 20px;
+  }
+
+  .case-content h3 {
+    font-size: 24px;
+    padding-top: 4px;
+  }
+
+  .case-company {
+    padding-top: 24px;
+  }
+
+  .case-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .case-btn {
+    width: 100%;
   }
 
   .case-footer {
     flex-direction: column;
     gap: 24px;
+    margin-top: 28px;
+  }
+
+  .view-all {
+    position: relative;
+    align-self: flex-end;
+  }
+
+  .fade-left,
+  .fade-right {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .case-studies {
+    padding: 32px 16px 60px;
+  }
+
+  .case-title {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+
+  .case-card {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .case-image {
+    height: 180px;
+  }
+
+  .case-content h3 {
+    font-size: 20px;
+  }
+
+  .case-content {
+    gap: 16px;
+  }
+
+  .case-company {
+    padding-top: 16px;
+  }
+
+  .company-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .company-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .case-company span {
+    font-size: 16px;
+  }
+
+  .pagination-dots .active {
+    width: 28px;
+    height: 10px;
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .view-all-content {
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .case-studies,
+  .case-title,
+  .case-carousel,
+  .case-footer,
+  .case-slide,
+  .case-card,
+  .case-card .case-image,
+  .case-card .case-content h3,
+  .case-btn,
+  .nav-btn,
+  .nav-btn svg,
+  .pagination-dots span,
+  .view-all,
+  .view-all-content::after,
+  .view-all svg {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
