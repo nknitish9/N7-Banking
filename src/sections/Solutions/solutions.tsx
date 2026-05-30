@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
-import "./Solutions.css";
+import "./solutions.css";
 
 const cardData = [
   {
