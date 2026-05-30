@@ -302,39 +302,63 @@ body {
 
 @media (max-width: 576px) {
   .header {
-    padding-top: 16px;
+    padding-top: 12px;
   }
 
   .header.is-scrolled {
-    padding-top: 10px;
+    padding-top: 8px;
   }
 
   .navbar {
+    width: 92%;
     height: auto;
+    padding: 8px 12px;
+    gap: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+  }
 
-    flex-direction: column;
-    gap: 16px;
-
-    padding: 14px;
+  .logo {
+    font-size: 20px;
   }
 
   .navbar-right {
-    width: 100%;
-
-    flex-direction: column;
-    gap: 16px;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
 
   .nav-links {
-    width: 100%;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
 
-    justify-content: center;
-    flex-wrap: wrap;
+  .nav-item {
+    font-size: 10px;
+    gap: 2px;
+  }
+
+  .nav-item__label {
+    font-size: 10px;
+  }
+
+  .nav-arrow {
+    width: 10px;
+    height: 10px;
   }
 
   .demo-btn {
-    width: 100%;
-    height: 40px;
+    width: 100px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .demo-btn__label {
+    font-size: 10px;
   }
 }
 
